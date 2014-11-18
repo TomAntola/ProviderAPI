@@ -1,0 +1,39 @@
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+*.pdb
+
+# Build results
+lib/
+bin/
+obj/
+src/app/portal.sln.meta*
+src/app/sedanmagic.sln.meta*
+build/BuildArtifacts
+build/DeploymentPackages
+build/PublishArtifacts
+
+# Test results
+TestResults/
+
+# Log files
+Logs/
+
+# jQuery NuGet
+src/app/Portal.Web.UI/Scripts/jQuery*
+src/app/SedanMagic.Web.Portal/Scripts/jQuery*
+
+# Publish Profiles
+src/app/Portal.Web.UI/Properties/PublishProfiles/*
+src/app/SedanMagic.Web.Portal/Properties/PublishProfiles/*
+
+# StyleCop Cache Files
+*.cache
+*.stylecop
+
+# Performance Session
+*.psess
+
+MAC Files
+*.DS_Store
