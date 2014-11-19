@@ -121,6 +121,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Content Include="Defaul.htm" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -132,8 +133,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Representations\" />
-    <Folder Include="Resources\" />
+    <Folder Include="Domain\" />
+    <Folder Include="Representations\JSON\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

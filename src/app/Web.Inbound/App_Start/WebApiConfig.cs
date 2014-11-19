@@ -9,6 +9,7 @@ namespace Web.Inbound
     {
         public static void Register(HttpConfiguration config)
         {
+            // Resource Routes
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
