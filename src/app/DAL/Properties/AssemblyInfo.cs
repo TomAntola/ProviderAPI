@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Infrastructure")]
+[assembly: AssemblyTitle("DAL")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Infrastructure")]
+[assembly: AssemblyProduct("DAL")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("a386b219-cf52-42fb-bf08-51ef0062e4fe")]
+[assembly: Guid("f3fce987-97a3-4053-871a-a1c4b948a80e")]

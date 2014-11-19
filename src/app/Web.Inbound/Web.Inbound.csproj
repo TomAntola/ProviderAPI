@@ -136,7 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Domain\" />
     <Folder Include="Representations\JSON\" />
   </ItemGroup>
   <ItemGroup>
