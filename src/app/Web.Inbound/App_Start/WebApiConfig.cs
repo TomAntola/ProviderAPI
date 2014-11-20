@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using Web.Inbound.Common.FiltersAndAttributes;
 
 namespace Web.Inbound
 {
@@ -6,6 +7,9 @@ namespace Web.Inbound
     {
         public static void Register(HttpConfiguration config)
         {
+            // Global Filters
+            config.Filters.Add(new ExceptionFilter());
+
             // Vehicle Route
             config.Routes.MapHttpRoute(
                 name: "Vehicle",

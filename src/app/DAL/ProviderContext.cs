@@ -1,4 +1,4 @@
-﻿using DAL.Utilites;
+﻿using Common.Utilites;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -10,8 +10,10 @@ namespace DAL
         public ProviderContext()
         {
             Database.SetInitializer<ProviderContext>(null);
-            this.Database.Connection.ConnectionString = LoadAppConfig.ConnectionString;
             var objectContext = (this as IObjectContextAdapter).ObjectContext;
+
+            LoadAppConfig.LoadConfigurationValues();
+            this.Database.Connection.ConnectionString = LoadAppConfig.ConnectionString;
             objectContext.CommandTimeout = LoadAppConfig.CommandTimeout;
         }
 
