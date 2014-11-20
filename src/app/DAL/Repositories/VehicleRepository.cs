@@ -1,4 +1,5 @@
-﻿using DAL.Entities;
+﻿using Common.HttpStatusCodeExceptions;
+using DAL.Entities;
 using System.Linq;
 
 namespace DAL.Repositories
@@ -14,6 +15,11 @@ namespace DAL.Repositories
             using (var context = new ProviderContext())
             {
                 vehicle = context.Database.SqlQuery<Vehicle>(string.Format(GET_VEHICLE, provider, carNo)).FirstOrDefault();
+            }
+
+            if (vehicle == null)
+            {
+                throw new NotFoundException(string.Format("Vehicle was not found. Provider = '{0}', Company = '{1}', CarNo = '{2}'.", provider, company, carNo));
             }
 
             return vehicle;

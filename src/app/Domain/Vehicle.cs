@@ -16,29 +16,19 @@
 
         public bool IsActive { get; private set; }
 
-        public Vehicle GetVehicle(string provider, string company, string carNo)
+        public static Vehicle CreateVehicle(string provider, string company, string carNo, string vehicleType, byte maxNoOfPassengers, bool isActive)
         {
-            var vehicle = new Vehicle
+            var newVehicle = new Vehicle()
             {
-                Provider = this.Provider,
-                Company = this.Company,
-                CarNo = this.CarNo,
-                VehicleType = this.VehicleType,
-                MaxNoOfPassengers = this.MaxNoOfPassengers,
-                IsActive = this.IsActive
+                Provider = provider,
+                Company = company,
+                CarNo = carNo,
+                VehicleType = vehicleType,
+                MaxNoOfPassengers = maxNoOfPassengers,
+                IsActive = isActive
             };
 
-            return vehicle;
-        }
-
-        public void SetVehicle(string provider, string company, string carNo, string vehicleType, byte maxNoOfPassengers, bool isActive)
-        {
-            this.Provider = provider;
-            this.Company = company;
-            this.CarNo = this.CarNo;
-            this.VehicleType = vehicleType;
-            this.MaxNoOfPassengers = maxNoOfPassengers;
-            this.IsActive = isActive;
+            return newVehicle;
         }
     }
 }

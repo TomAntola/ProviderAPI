@@ -13,8 +13,7 @@ namespace Domain.Services
 
             if (ev != null)
             {
-                vehicle = new Vehicle();
-                vehicle.SetVehicle(ev.Provider, ev.Company, ev.CarNo, ev.VehicleType, ev.MaxNoOfPassengers, ev.IsActive);
+                vehicle = Vehicle.CreateVehicle(ev.Provider, ev.Company, ev.CarNo, ev.VehicleType, ev.MaxNoOfPassengers, ev.IsActive);
             }
 
             return vehicle;
