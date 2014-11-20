@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Web.Inbound
 {
@@ -11,9 +8,9 @@ namespace Web.Inbound
         {
             // Resource Routes
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                name: "Vehicle",
+                routeTemplate: "vehicle/{provider}/{company}/{carNo}",
+                defaults: new { controller = "Vehicle", company = RouteParameter.Optional, carNo = RouteParameter.Optional }
             );
         }
     }

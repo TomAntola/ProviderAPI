@@ -1,6 +1,7 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 
-namespace DAL
+namespace DAL.Utilites
 {
     public static class LoadAppConfig
     {
@@ -12,7 +13,17 @@ namespace DAL
         {
             get
             {
-                _connectionString = ConfigurationManager.ConnectionStrings["PortalDb"].ConnectionString;
+                if (_connectionString == null)
+                {
+                    var configValue = ConfigurationManager.ConnectionStrings["ProviderDatabase"];
+
+                    if (configValue == null)
+                    {
+                        throw new ArgumentException(string.Format("Connection string was not found: '{0}'", "ProviderDatabase"));
+                    }
+
+                    _connectionString = configValue.ConnectionString;
+                }
 
                 return _connectionString;
             }
