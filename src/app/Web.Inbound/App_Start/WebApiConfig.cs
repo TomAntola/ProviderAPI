@@ -6,11 +6,11 @@ namespace Web.Inbound
     {
         public static void Register(HttpConfiguration config)
         {
-            // Resource Routes
+            // Vehicle Route
             config.Routes.MapHttpRoute(
                 name: "Vehicle",
                 routeTemplate: "vehicle/{provider}/{company}/{carNo}",
-                defaults: new { controller = "Vehicle", company = RouteParameter.Optional, carNo = RouteParameter.Optional }
+                defaults: new { controller = "Vehicle", company = string.Empty, carNo =  string.Empty }
             );
         }
     }
