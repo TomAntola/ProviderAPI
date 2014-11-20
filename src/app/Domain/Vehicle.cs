@@ -16,7 +16,7 @@
 
         public bool IsActive { get; private set; }
 
-        public static Vehicle CreateVehicle(string provider, string company, string carNo, string vehicleType, byte maxNoOfPassengers, bool isActive)
+        public static Vehicle Create(string provider, string company, string carNo, string vehicleType, byte maxNoOfPassengers, bool isActive)
         {
             var newVehicle = new Vehicle()
             {
