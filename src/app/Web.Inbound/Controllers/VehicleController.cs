@@ -8,13 +8,18 @@ namespace Web.Inbound.Controllers
 {
     public class VehicleController : ApiController
     {
+        private VehicleService _vehicleService = null;
+
+        public VehicleController()
+        {
+            var _vehicleService = new VehicleService();
+        }
+
         public HttpResponseMessage Get(HttpRequestMessage request, string provider, string company, string carNo)
         {
-            var vehicleService = new VehicleService();
+            _vehicleService = new VehicleService();
+            var vehicle = _vehicleService.GetVehicle(provider, company, carNo);
 
-            var vehicle = vehicleService.GetVehicle(provider, company, carNo);
-
-            // Map domain model to view model and then return response.
             return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle);
         }
     }
