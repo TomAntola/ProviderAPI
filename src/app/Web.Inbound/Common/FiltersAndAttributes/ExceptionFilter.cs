@@ -1,16 +1,16 @@
-﻿using System.Net;
+﻿using log4net;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Web.Http;
 using System.Web.Http.Filters;
-//using log4net;
 
 namespace Web.Inbound.Common.FiltersAndAttributes
 {
     public class ExceptionFilter : ExceptionFilterAttribute
     {
         // Retrieves the logger for the Web API.
-        //private static readonly ILog log = LogManager.GetLogger("smtp.webapi-logger");
+        private static readonly ILog log = LogManager.GetLogger("RootAppender");
 
         public override void OnException(HttpActionExecutedContext context)
         {
@@ -64,11 +64,11 @@ namespace Web.Inbound.Common.FiltersAndAttributes
             switch (log_level)
             {
                 case "Debug":
-                    //log.Debug(sb.ToString(), context.Exception);
+                    log.Debug(sb.ToString(), context.Exception);
                     break;
                 case "Error":
-                    //log.Debug(sb.ToString(), context.Exception);
-                    //log.Error(sb.ToString(), context.Exception);
+                    log.Debug(sb.ToString(), context.Exception);
+                    log.Error(sb.ToString(), context.Exception);
                     break;
             }
         }

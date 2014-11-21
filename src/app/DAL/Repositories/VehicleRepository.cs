@@ -1,6 +1,5 @@
 ﻿using Common.HttpStatusCodeExceptions;
 using DAL.Entities;
-using System.Data.SqlClient;
 using System.Linq;
 
 namespace DAL.Repositories
