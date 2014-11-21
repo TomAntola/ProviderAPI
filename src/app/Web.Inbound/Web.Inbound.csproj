@@ -46,6 +46,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\..\..\lib\EntityFramework.6.1.1\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\lib\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
