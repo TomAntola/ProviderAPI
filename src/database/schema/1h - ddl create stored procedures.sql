@@ -5,6 +5,10 @@
 use ProviderDb;
 go
 
+if exists (select object_id from sys.procedures where name = 'GetVehicle' and type = 'P')
+  drop procedure dbo.GetVehicle;
+go
+
 /* +-------------------------------------------------------------------------------------------------------------------------+ */
 /* | Author   - Tom Antola                                                                                                   | */
 /* | Created  - 11/20/2014                                                                                                   | */
