@@ -8,16 +8,20 @@ namespace Web.Inbound.Controllers
 {
     public class VehicleController : ApiController
     {
-        private VehicleService _vehicleService = null;
+        private IVehicleService _vehicleService;
 
         public VehicleController()
         {
-            var _vehicleService = new VehicleService();
+            _vehicleService = new VehicleService();
+        }
+
+        public VehicleController(IVehicleService vehicleService)
+        {
+            _vehicleService = vehicleService;
         }
 
         public HttpResponseMessage Get(HttpRequestMessage request, string provider, string company, string carNo)
         {
-            _vehicleService = new VehicleService();
             var vehicle = _vehicleService.GetVehicle(provider, company, carNo);
 
             return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle);

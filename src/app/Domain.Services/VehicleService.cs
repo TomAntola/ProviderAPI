@@ -2,14 +2,25 @@
 
 namespace Domain.Services
 {
-    public class VehicleService
+    public class VehicleService : IVehicleService
     {
+        private IVehicleRepository _vehicleRepository;
+
+        public VehicleService()
+        {
+            _vehicleRepository = new VehicleRepository();
+        }
+
+        public VehicleService(IVehicleRepository vehicleRepository)
+        {
+            _vehicleRepository = vehicleRepository;
+        }
+
         public Vehicle GetVehicle(string provider, string company, string carNo)
         {
             Vehicle vehicle = null;
 
-            var vehicleRepo = new VehicleRepository();
-            var ev = vehicleRepo.GetVehicle(provider, company, carNo);
+            var ev = _vehicleRepository.GetVehicle(provider, company, carNo);
 
             if (ev != null)
             {
