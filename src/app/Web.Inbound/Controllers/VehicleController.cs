@@ -8,12 +8,7 @@ namespace Web.Inbound.Controllers
 {
     public class VehicleController : ApiController
     {
-        private IVehicleService _vehicleService;
-
-        public VehicleController()
-        {
-            _vehicleService = new VehicleService();
-        }
+        private readonly IVehicleService _vehicleService;
 
         public VehicleController(IVehicleService vehicleService)
         {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Web.Http;
-using System.Web.Mvc;
+﻿using System.Web.Http;
 
 namespace Web.Inbound
 {
@@ -11,8 +9,8 @@ namespace Web.Inbound
     {
         protected void Application_Start()
         {
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
-            FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+            WebApiRouteConfig.Register(GlobalConfiguration.Configuration);
+            WebApiFilterConfig.Register(GlobalConfiguration.Configuration);
         }
     }
 }

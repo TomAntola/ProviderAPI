@@ -4,12 +4,7 @@ namespace Domain.Services
 {
     public class VehicleService : IVehicleService
     {
-        private IVehicleRepository _vehicleRepository;
-
-        public VehicleService()
-        {
-            _vehicleRepository = new VehicleRepository();
-        }
+        private readonly IVehicleRepository _vehicleRepository;
 
         public VehicleService(IVehicleRepository vehicleRepository)
         {
