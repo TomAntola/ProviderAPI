@@ -2,16 +2,16 @@
 {
     public class Vehicle
     {
-        public string Provider { get; private set; }
+        public string Provider { get; set; }
 
-        public string Company { get; private set; }
+        public string Company { get; set; }
 
-        public string CarNo { get; private set; }
+        public string CarNo { get; set; }
 
-        public string VehicleType { get; private set; }
+        public string VehicleType { get; set; }
 
-        public byte MaxNoOfPassengers { get; private set; }
+        public byte MaxNoOfPassengers { get; set; }
 
-        public bool IsActive { get; private set; }
+        public bool IsActive { get; set; }
     }
 }
