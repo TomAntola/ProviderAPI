@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderApiTests", "ProviderApiTests\ProviderApiTests.csproj", "{23FA8705-C441-4F27-BE1A-A7FE8F61D00E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Common", "Web.Common\Web.Common.csproj", "{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{23FA8705-C441-4F27-BE1A-A7FE8F61D00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23FA8705-C441-4F27-BE1A-A7FE8F61D00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{23FA8705-C441-4F27-BE1A-A7FE8F61D00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

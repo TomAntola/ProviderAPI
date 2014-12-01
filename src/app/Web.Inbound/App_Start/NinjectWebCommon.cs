@@ -14,6 +14,8 @@ namespace Web.Inbound.App_Start
     using System.Web;
     using System.Web.Http;
     using System.Web.Http.Dependencies;
+    using Web.Common.Security;
+    using Web.Inbound.Common.MessageHandlers;
 
     public static class NinjectWebCommon
     {
@@ -59,8 +61,12 @@ namespace Web.Inbound.App_Start
             // Services.
             kernel.Bind<IVehicleService>().To<VehicleService>();
 
+            // Factories.
+            kernel.Bind<IPrincipalFactory>().To<GenericPrincipalFactory>();
+
             // Global Configuration.
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            GlobalConfiguration.Configuration.MessageHandlers.Add(kernel.Get<BasicAuthenticationMessageHandler>());
         }
     }
 
