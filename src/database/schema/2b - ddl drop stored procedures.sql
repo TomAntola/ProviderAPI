@@ -7,4 +7,7 @@ go
 
 if exists (select object_id from sys.procedures where name = 'GetVehicle' and type = 'P')
   drop procedure dbo.GetVehicle;
+
+if exists (select object_id from sys.procedures where name = 'GetProviderApiUser' and type = 'P')
+  drop procedure dbo.GetProviderApiUser;
 go

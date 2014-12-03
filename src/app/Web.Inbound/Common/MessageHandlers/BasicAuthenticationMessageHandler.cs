@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Domain.Services;
+using System;
 using System.Net;
 using System.Net.Http;
+using System.Security.Cryptography;
 using System.Security.Principal;
 using System.Text;
 using System.Threading;
@@ -13,14 +15,17 @@ namespace Web.Inbound.Common.MessageHandlers
     public class BasicAuthenticationMessageHandler : DelegatingHandler
     {
         private readonly IPrincipalFactory _principalFactory;
+        private readonly ISecurityService _securityService;
+        private readonly HashAlgorithm _hashAlgorithm = new SHA256Cng();
 
         public const string BASIC_AUTHENTICATION = "Basic";
         public const string CHALLENGE_AUTHENTICATION_HEADER_NAME = "WWW-Authenticate";
         public const char AUTHORIZATION_HEADER_SEPARATOR = ':';
 
-        public BasicAuthenticationMessageHandler(IPrincipalFactory principal_factory)
+        public BasicAuthenticationMessageHandler(IPrincipalFactory principal_factory, ISecurityService securityService)
         {
             _principalFactory = principal_factory;
+            _securityService = securityService;
         }
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
@@ -66,8 +71,16 @@ namespace Web.Inbound.Common.MessageHandlers
             var username = credentialParts[0].Trim();
             var password = credentialParts[1].Trim();
 
-//            if (!_securityService.IsValidUser(username, password))
-            if (username != "Test" || password != "User")
+            var providerApiUser = _securityService.GetUser(username);
+
+            if (providerApiUser == null)
+            {
+                return CreateUnauthorizedResponse(request);
+            }
+
+            var passwordHash = _securityService.HashSaltedPassword(Encoding.UTF8.GetBytes(password), providerApiUser.Salt, _hashAlgorithm);
+
+            if (!_securityService.ValidPassword(passwordHash, providerApiUser.Password))
             {
                 return CreateUnauthorizedResponse(request);
             }

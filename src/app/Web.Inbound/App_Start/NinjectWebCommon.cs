@@ -57,9 +57,11 @@ namespace Web.Inbound.App_Start
         {
             // Repositories.
             kernel.Bind<IVehicleRepository>().To<VehicleRepository>();
+            kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepositoryStub>();
 
             // Services.
             kernel.Bind<IVehicleService>().To<VehicleService>();
+            kernel.Bind<ISecurityService>().To<SecurityService>();
 
             // Factories.
             kernel.Bind<IPrincipalFactory>().To<GenericPrincipalFactory>();

@@ -41,3 +41,28 @@ begin
 end;
 go
 
+if exists (select object_id from sys.procedures where name = 'GetProviderApiUser' and type = 'P')
+  drop procedure dbo.GetProviderApiUser;
+go
+
+/* +-------------------------------------------------------------------------------------------------------------------------+ */
+/* | Author   - Tom Antola                                                                                                   | */
+/* | Created  - 12/2/2014                                                                                                    | */
+/* | Parms    - Username - Username within the provider_api_user table.  Usernames must be unique.                           | */
+/* | Purpose  - This procedure returns the user information for the supplied username. The password is verified in the       | */
+/* |            application layer.                                                                                           | */
+/* +-------------------------------------------------------------------------------------------------------------------------+ */
+create procedure dbo.GetProviderApiUser
+(
+ @Username         varchar (50)
+) as
+begin
+
+  set nocount on;
+
+  select username, password, salt
+    from dbo.provider_api_user
+  where username = @Username;
+
+end;
+go

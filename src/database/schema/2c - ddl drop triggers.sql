@@ -13,4 +13,7 @@ if exists (select r.* from sys.tables t inner join sys.triggers r on t.object_id
 
 if exists (select r.* from sys.tables t inner join sys.triggers r on t.object_id = r.parent_id where t.name = 'vehicle' and r.name = 'vehicle_setupdatets')
   drop trigger dbo.vehicle_setupdatets;
+
+if exists (select r.* from sys.tables t inner join sys.triggers r on t.object_id = r.parent_id where t.name = 'provider_api_user' and r.name = 'provider_api_user_setupdatets')
+  drop trigger dbo.provider_api_user_setupdatets;
 go
