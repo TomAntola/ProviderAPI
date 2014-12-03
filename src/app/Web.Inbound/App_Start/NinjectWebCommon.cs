@@ -14,6 +14,8 @@ namespace Web.Inbound.App_Start
     using System.Web;
     using System.Web.Http;
     using System.Web.Http.Dependencies;
+    using Web.Common.Security;
+    using Web.Inbound.Common.MessageHandlers;
 
     public static class NinjectWebCommon
     {
@@ -55,16 +57,22 @@ namespace Web.Inbound.App_Start
         {
             // Repositories.
             kernel.Bind<IVehicleRepository>().To<VehicleRepository>();
+            kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepository>();
 
             // Services.
             kernel.Bind<IVehicleService>().To<VehicleService>();
+            kernel.Bind<ISecurityService>().To<SecurityService>();
+
+            // Factories.
+            kernel.Bind<IPrincipalFactory>().To<GenericPrincipalFactory>();
 
             // Global Configuration.
             GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+            GlobalConfiguration.Configuration.MessageHandlers.Add(kernel.Get<BasicAuthenticationMessageHandler>());
         }
     }
 
-    public class NinjectDependencyScope : IDependencyScope
+    public class NinjectDependencyScope : IDependencyScope, IDisposable
     {
         private IResolutionRoot resolutionRoot;
 
@@ -97,14 +105,23 @@ namespace Web.Inbound.App_Start
 
         public void Dispose()
         {
-            var disposable = resolutionRoot as IDisposable;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            if (disposable != null)
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                disposable.Dispose();
-            }
+                // free managed resources
+                var disposable = resolutionRoot as IDisposable;
 
-            resolutionRoot = null;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                    resolutionRoot = null;
+                }
+            }
         }
     }
 
