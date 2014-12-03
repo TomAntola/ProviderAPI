@@ -33,3 +33,13 @@ Click on the Fiddler's Inspector tab then the Raw header in the bottom view to s
 
 -- Test GetVehicle.
 execute dbo.GetVehicle 'Rolling Thunder Enterprises', 'Black Diamond Sedans', 'BDS-001';
+
+Update 2014-12-03
+The REST API now requires Basic Authentication.  I created a simply tool to help you add a test user to the database.  After compiling the tool with the Debug build,
+to the local tools folder and run the LocalTools.exe.  It can be found at {GitRoot}\ProviderAPI\src\app\LocalTools\bin\Debug\LocalTools.exe.  Update the connection
+string for the tool found in the app.config file at {GitRoot}\ProviderAPI\src\app\LocalTools\app.config to point to you local database.  Then double click the the
+LocalTool.exe.  Enter an "A" to add/modify a new user.  Once promprted, enter a username and a password.  Finally, encode the username:password in Base64.  You can
+use this site to help: https://www.base64encode.org/ (make sure you are on the encode page) and enter the username, no space, colon (i.e. :), no space and the 
+password.  Click encode to encode it and copy it for the Authorization Header.  Back to Fiddler2 and add a new Authorization header with your Base64 encoded username
+and password.  The header should look like Authorization: Basic VGVzdDpVc2Vy.  This is an example where I used username = Test and password = User (i.e. Base64
+encoding of Test:User => VGVzdDpVc2Vy).  Now you should be able to call the API methods again.
