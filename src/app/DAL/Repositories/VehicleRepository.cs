@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace DAL.Repositories
 {
-    public class VehicleRepository
+    public class VehicleRepository : IVehicleRepository
     {
         private const string GET_VEHICLE = "execute dbo.GetVehicle '{0}', '{1}', '{2}';";
 

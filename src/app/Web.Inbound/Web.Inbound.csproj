@@ -50,6 +50,15 @@
       <HintPath>..\..\..\lib\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject">
+      <HintPath>..\..\..\lib\Ninject.3.2.2.0\lib\net40\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common">
+      <HintPath>..\..\..\lib\Ninject.Web.Common.3.2.3.0\lib\net40-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\..\..\lib\Ninject.MVC3.3.2.1.0\lib\net40-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -120,12 +129,18 @@
       <Private>True</Private>
       <HintPath>..\..\..\lib\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\WebActivatorEx.2.0.6\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Common\FiltersAndAttributes\ExceptionFilter.cs" />
+    <Compile Include="Common\MessageHandlers\BasicAuthenticationMessageHandler.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -133,8 +148,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="App_Start\WebApiFilterConfig.cs" />
+    <Compile Include="App_Start\WebApiRouteConfig.cs" />
     <Content Include="Defaul.htm" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -152,6 +167,14 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ba65ea16-cbb4-4cb3-85c2-3ac65e3d1227}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{37cde597-7d59-447a-acdc-3dc4373187df}</Project>
+      <Name>DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Domain.Services\Domain.Services.csproj">
       <Project>{dbd13130-a9a0-44b5-bfff-92a3f36026e0}</Project>
       <Name>Domain.Services</Name>
@@ -159,6 +182,10 @@
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{1e04d7cc-b6bc-487f-b8e5-6fedbfcb8e99}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Web.Common\Web.Common.csproj">
+      <Project>{5ede3ae1-47d5-4eff-b275-01d00c9c4fbf}</Project>
+      <Name>Web.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

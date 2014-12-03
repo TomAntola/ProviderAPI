@@ -13,4 +13,7 @@ if exists (select t.name from sys.schemas s inner join sys.tables t on s.schema_
 
 if exists (select t.name from sys.schemas s inner join sys.tables t on s.schema_id = t.schema_id where s.name = 'dbo' and t.name = 'provider_hierarchy')
   drop table dbo.provider_hierarchy;
+
+if exists (select t.name from sys.schemas s inner join sys.tables t on s.schema_id = t.schema_id where s.name = 'dbo' and t.name = 'provider_api_user')
+  drop table dbo.provider_api_user;
 go
