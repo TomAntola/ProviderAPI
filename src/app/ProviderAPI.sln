@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProviderApiTests", "Provide
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Common", "Web.Common\Web.Common.csproj", "{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LocalTools", "LocalTools\LocalTools.csproj", "{42A31DB7-96DC-490B-9DF6-1AC7467952BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,10 @@ Global
 		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EDE3AE1-47D5-4EFF-B275-01D00C9C4FBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42A31DB7-96DC-490B-9DF6-1AC7467952BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42A31DB7-96DC-490B-9DF6-1AC7467952BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42A31DB7-96DC-490B-9DF6-1AC7467952BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42A31DB7-96DC-490B-9DF6-1AC7467952BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

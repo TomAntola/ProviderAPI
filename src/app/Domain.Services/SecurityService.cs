@@ -20,19 +20,10 @@ namespace Domain.Services
 
         public ProviderApiUser GetUser(string username)
         {
-            ProviderApiUser user = null;
-
-            var eu = _providerApiUserRepository.GetUser(username);
-
-            if (eu != null)
-            {
-                user = ProviderApiUser.Create(eu.Username, eu.Password, eu.Salt);
-            }
-
-            return user;
+            return _providerApiUserRepository.GetUser(username);
         }
 
-        public byte[] CreateSalt()
+        public static byte[] CreateSalt()
         {
             // Generate a new random salt.
             var csprng = new RNGCryptoServiceProvider();
@@ -100,6 +91,11 @@ namespace Domain.Services
             #endregion Parameter Validation.
 
             return AttemptedPassword.SequenceEqual(ActualPassword);
+        }
+
+        public void AddEditUser(ProviderApiUser providerApiUser)
+        {
+            _providerApiUserRepository.AddEditUser(providerApiUser);
         }
     }
 }

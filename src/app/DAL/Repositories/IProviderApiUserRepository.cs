@@ -1,9 +1,11 @@
-﻿using DAL.Entities;
+﻿using Domain;
 
 namespace DAL.Repositories
 {
     public interface IProviderApiUserRepository
     {
-        ProviderApiUser GetUser(string Username);
+        ProviderApiUser GetUser(string username);
+
+        void AddEditUser(ProviderApiUser providerApiUser);
     }
 }

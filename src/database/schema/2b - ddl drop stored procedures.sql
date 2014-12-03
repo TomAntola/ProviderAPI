@@ -10,4 +10,7 @@ if exists (select object_id from sys.procedures where name = 'GetVehicle' and ty
 
 if exists (select object_id from sys.procedures where name = 'GetProviderApiUser' and type = 'P')
   drop procedure dbo.GetProviderApiUser;
+
+if exists (select object_id from sys.procedures where name = 'AddEditProviderApiUser' and type = 'P')
+  drop procedure dbo.AddEditProviderApiUser;
 go

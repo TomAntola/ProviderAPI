@@ -57,7 +57,7 @@ namespace Web.Inbound.App_Start
         {
             // Repositories.
             kernel.Bind<IVehicleRepository>().To<VehicleRepository>();
-            kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepositoryStub>();
+            kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepository>();
 
             // Services.
             kernel.Bind<IVehicleService>().To<VehicleService>();
@@ -72,7 +72,7 @@ namespace Web.Inbound.App_Start
         }
     }
 
-    public class NinjectDependencyScope : IDependencyScope
+    public class NinjectDependencyScope : IDependencyScope, IDisposable
     {
         private IResolutionRoot resolutionRoot;
 
@@ -105,14 +105,23 @@ namespace Web.Inbound.App_Start
 
         public void Dispose()
         {
-            var disposable = resolutionRoot as IDisposable;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
 
-            if (disposable != null)
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
             {
-                disposable.Dispose();
-            }
+                // free managed resources
+                var disposable = resolutionRoot as IDisposable;
 
-            resolutionRoot = null;
+                if (disposable != null)
+                {
+                    disposable.Dispose();
+                    resolutionRoot = null;
+                }
+            }
         }
     }
 

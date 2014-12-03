@@ -66,3 +66,39 @@ begin
 
 end;
 go
+
+if exists (select object_id from sys.procedures where name = 'AddEditProviderApiUser' and type = 'P')
+  drop procedure dbo.AddEditProviderApiUser;
+go
+
+/* +-------------------------------------------------------------------------------------------------------------------------+ */
+/* | Author   - Tom Antola                                                                                                   | */
+/* | Created  - 12/3/2014                                                                                                    | */
+/* | Parms    - Username - Username within the provider_api_user table.  Usernames must be unique.                           | */
+/* |            Password - User's password.                                                                                  | */
+/* |            Salt     - Unique salt used when encrypting user's password.                                                 | */
+/* | Purpose  - This procedure will add a new user or update an existing one with the parameters passed in.                  | */
+/* +-------------------------------------------------------------------------------------------------------------------------+ */
+create procedure dbo.AddEditProviderApiUser
+(
+ @Username         varchar   (50),
+ @Password         varbinary (64),
+ @Salt             varbinary (64)
+) as
+begin
+
+  set nocount on;
+
+  update dbo.provider_api_user
+     set password = @Password,
+	     salt     = @Salt
+   where username = @Username;
+
+  if (@@ROWCOUNT = 0)
+  begin
+    insert into dbo.provider_api_user (username, password, salt)
+    values (@Username, @Password, @Salt);
+  end;
+
+end;
+go
