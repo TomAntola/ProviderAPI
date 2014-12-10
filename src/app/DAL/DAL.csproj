@@ -56,8 +56,9 @@
     <Compile Include="Repositories\IProviderApiUserRepository.cs" />
     <Compile Include="Repositories\IVehicleRepository.cs" />
     <Compile Include="Repositories\ProviderApiUserRepository.cs" />
-    <Compile Include="Repositories\ProviderApiUserRepositoryStub.cs" />
+    <Compile Include="Repositories\ProviderApiUserRepositoryFake.cs" />
     <Compile Include="Repositories\VehicleRepository.cs" />
+    <Compile Include="Repositories\VehicleRepositoryFake.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

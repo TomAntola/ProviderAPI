@@ -56,8 +56,8 @@ namespace Web.Inbound.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             // Repositories.
-            kernel.Bind<IVehicleRepository>().To<VehicleRepository>();
-            kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepository>();
+            kernel.Bind<IVehicleRepository>().To<VehicleRepositoryFake>();
+            kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepositoryFake>();
 
             // Services.
             kernel.Bind<IVehicleService>().To<VehicleService>();

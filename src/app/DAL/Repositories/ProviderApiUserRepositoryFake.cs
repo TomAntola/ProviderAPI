@@ -3,7 +3,7 @@ using System;
 
 namespace DAL.Repositories
 {
-    public class ProviderApiUserRepositoryStub : IProviderApiUserRepository
+    public class ProviderApiUserRepositoryFake : IProviderApiUserRepository
     {
         public ProviderApiUser GetUser(string Username)
         {

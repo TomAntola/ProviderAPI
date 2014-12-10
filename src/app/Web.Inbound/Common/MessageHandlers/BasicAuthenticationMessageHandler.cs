@@ -16,7 +16,7 @@ namespace Web.Inbound.Common.MessageHandlers
     {
         private readonly IPrincipalFactory _principalFactory;
         private readonly ISecurityService _securityService;
-        private readonly HashAlgorithm _hashAlgorithm = new SHA256Cng();
+        private readonly HashAlgorithm _hashAlgorithm = new SHA256Managed();
 
         public const string BASIC_AUTHENTICATION = "Basic";
         public const string CHALLENGE_AUTHENTICATION_HEADER_NAME = "WWW-Authenticate";
