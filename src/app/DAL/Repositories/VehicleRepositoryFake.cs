@@ -1,6 +1,5 @@
-﻿using DAL.Entities;
-using Common.HttpStatusCodeExceptions;
-using System;
+﻿using Common.HttpStatusCodeExceptions;
+using DAL.Entities;
 
 namespace DAL.Repositories
 {
@@ -14,12 +13,18 @@ namespace DAL.Repositories
             {
                 vehicle = new Vehicle
                 {
-                    CarNo = "BDS-001",
-                    Company = "Black Diamond",
-                    IsActive = true,
-                    MaxNoOfPassengers = 4,
                     Provider = "Rolling Thunder Enterprises",
-                    VehicleType = "Sedan"
+                    CompanyId = "2",
+                    CompanyName = "Black Diamond",
+                    CarNo = "BDS-001",
+                    Year = "2011",
+                    Make = "Lincoln",
+                    Model = "TOWN CAR",
+                    Color = "Black",
+                    MaxNoOfPassengers = 4,
+                    VehicleType = "Sedan",
+                    VinNo = "XD90213UIDJJ654",
+                    IsActive = true
                 };
             }
 

@@ -1,8 +1,7 @@
 ﻿using Common.HttpStatusCodeExceptions;
 using Domain;
-using System.Collections.Generic;
-using System.Linq;
 using System.Data.SqlClient;
+using System.Linq;
 
 namespace DAL.Repositories
 {

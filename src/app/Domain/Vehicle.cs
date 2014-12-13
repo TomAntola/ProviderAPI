@@ -4,27 +4,45 @@
     {
         public Vehicle() { }
 
-        public string Provider { get; private set; }
+        public string Provider { get; set; }
 
-        public string Company { get; private set; }
+        public string CompanyId { get; set; }
 
-        public string CarNo { get; private set; }
+        public string CompanyName { get; set; }
 
-        public string VehicleType { get; private set; }
+        public string CarNo { get; set; }
 
-        public byte MaxNoOfPassengers { get; private set; }
+        public string Year { get; set; }
 
-        public bool IsActive { get; private set; }
+        public string Make { get; set; }
 
-        public static Vehicle Create(string provider, string company, string carNo, string vehicleType, byte maxNoOfPassengers, bool isActive)
+        public string Model { get; set; }
+
+        public string Color { get; set; }
+
+        public string VehicleType { get; set; }
+
+        public byte MaxNoOfPassengers { get; set; }
+
+        public string VinNo { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public static Vehicle Create(string provider, string companyId, string companyName, string carNo, string year, string make, string model, string color, string vehicleType, byte maxNoOfPassengers, string vinNo, bool isActive)
         {
             var newVehicle = new Vehicle()
             {
                 Provider = provider,
-                Company = company,
+                CompanyId = companyId,
+                CompanyName = companyName,
                 CarNo = carNo,
+                Year = year,
+                Make = make,
+                Model = model,
+                Color = color,
                 VehicleType = vehicleType,
                 MaxNoOfPassengers = maxNoOfPassengers,
+                VinNo = vinNo,
                 IsActive = isActive
             };
 

@@ -15,7 +15,7 @@ go
 /* | Parms    - None                                                                                                         | */
 /* | Purpose  - This procedure returns the searched for vehicle.                                                             | */
 /* +-------------------------------------------------------------------------------------------------------------------------+ */
-create procedure dbo.GetVehicle
+create procedure [dbo].[GetVehicle]
 (
  @Provider         varchar (50),
  @Company          varchar (50),
@@ -24,12 +24,19 @@ create procedure dbo.GetVehicle
 begin
 
   set nocount on;
+  set transaction isolation level read uncommitted;
 
   select Provider			= p.provider_hierarchy_name,
-         Company				= c.provider_hierarchy_name,
+         CompanyId			= cast(c.provider_hierarchy_id as varchar(15)),
+         CompanyName			= c.provider_hierarchy_name,
 		 CarNo				= v.car_no,
+		 Year               = '2011',
+		 Make               = 'Licoln',
+		 Model              = 'Town Car',
+		 Color              = 'Black',
 		 VehicleType			= vt.vehicle_type,
 		 MaxNoOfPassengers	= v.capacity,
+		 VinNo              = 'RJ340SIO221UVBA',
 		 IsActive			= v.is_active
     from dbo.vehicle v inner join dbo.provider_hierarchy c on v.provider_hierarchy_id = c.provider_hierarchy_id
 	                   inner join dbo.provider_hierarchy p on c.parent_provider_hierarchy_id = p.provider_hierarchy_id
