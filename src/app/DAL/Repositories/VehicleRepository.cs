@@ -6,20 +6,20 @@ namespace DAL.Repositories
 {
     public class VehicleRepository : IVehicleRepository
     {
-        private const string GET_VEHICLE = "execute dbo.GetVehicle '{0}', '{1}', '{2}';";
+        private const string GET_VEHICLE = "execute dbo.GetVehicle '{0}', '{1}';";
 
-        public Vehicle GetVehicle(string provider, string company, string carNo)
+        public Vehicle GetVehicle(string company, string carNo)
         {
             Vehicle vehicle = null;
 
             using (var context = new ProviderContext())
             {
-                vehicle = context.Database.SqlQuery<Vehicle>(string.Format(GET_VEHICLE, provider, company, carNo)).FirstOrDefault();
+                vehicle = context.Database.SqlQuery<Vehicle>(string.Format(GET_VEHICLE, company, carNo)).FirstOrDefault();
             }
 
             if (vehicle == null)
             {
-                throw new NotFoundException(string.Format("Vehicle was not found. Provider = '{0}', Company = '{1}', CarNo = '{2}'.", provider, company, carNo));
+                throw new NotFoundException(string.Format("Vehicle was not found. Company = '{0}', CarNo = '{1}'.", company, carNo));
             }
 
             return vehicle;

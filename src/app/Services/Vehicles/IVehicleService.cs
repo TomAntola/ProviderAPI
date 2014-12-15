@@ -4,6 +4,6 @@ namespace Services.Vehicles
 {
     public interface IVehicleService
     {
-        Vehicle GetVehicle(string provider, string company, string carNo);
+        Vehicle GetVehicle(string company, string carNo);
     }
 }

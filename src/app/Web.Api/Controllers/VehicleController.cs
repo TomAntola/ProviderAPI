@@ -17,7 +17,7 @@ namespace Web.Api.Controllers
 
         public HttpResponseMessage Get(HttpRequestMessage request, string provider, string company, string carNo)
         {
-            var vehicle = _vehicleService.GetVehicle(provider, company, carNo);
+            var vehicle = _vehicleService.GetVehicle(company, carNo);
 
             return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle);
         }

@@ -2,8 +2,6 @@
 {
     public class Vehicle
     {
-        public string Provider { get; set; }
-
         public string CompanyId { get; set; }
 
         public string CompanyName { get; set; }

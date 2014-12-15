@@ -12,15 +12,15 @@ namespace Services.Vehicles
             _vehicleRepository = vehicleRepository;
         }
 
-        public Vehicle GetVehicle(string provider, string company, string carNo)
+        public Vehicle GetVehicle(string company, string carNo)
         {
             Vehicle vehicle = null;
 
-            var ev = _vehicleRepository.GetVehicle(provider, company, carNo);
+            var ev = _vehicleRepository.GetVehicle(company, carNo);
 
             if (ev != null)
             {
-                vehicle = Vehicle.Create(ev.Provider, ev.CompanyId, ev.CompanyName, ev.CarNo, ev.Year, ev.Make, ev.Model, ev.Color, ev.VehicleType, ev.MaxNoOfPassengers, ev.VinNo, ev.IsActive);
+                vehicle = Vehicle.Create(ev.CompanyId, ev.CompanyName, ev.CarNo, ev.Year, ev.Make, ev.Model, ev.Color, ev.VehicleType, ev.MaxNoOfPassengers, ev.VinNo, ev.IsActive);
             }
 
             return vehicle;

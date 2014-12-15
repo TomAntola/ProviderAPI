@@ -4,8 +4,6 @@
     {
         public Vehicle() { }
 
-        public string Provider { get; set; }
-
         public string CompanyId { get; set; }
 
         public string CompanyName { get; set; }
@@ -28,11 +26,10 @@
 
         public bool IsActive { get; set; }
 
-        public static Vehicle Create(string provider, string companyId, string companyName, string carNo, string year, string make, string model, string color, string vehicleType, byte maxNoOfPassengers, string vinNo, bool isActive)
+        public static Vehicle Create(string companyId, string companyName, string carNo, string year, string make, string model, string color, string vehicleType, byte maxNoOfPassengers, string vinNo, bool isActive)
         {
             var newVehicle = new Vehicle()
             {
-                Provider = provider,
                 CompanyId = companyId,
                 CompanyName = companyName,
                 CarNo = carNo,
