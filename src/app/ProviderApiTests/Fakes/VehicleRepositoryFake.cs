@@ -29,7 +29,7 @@ namespace DAL.Repositories
 
             if (vehicle == null)
             {
-                throw new NotFoundException(string.Format("The vehicle was not found. company = '{1}', carNo = '{2}'.", company, carNo));
+                throw new NotFoundException(string.Format("The vehicle was not found. company = '{0}', carNo = '{1}'.", company, carNo));
             }
 
             return vehicle;
