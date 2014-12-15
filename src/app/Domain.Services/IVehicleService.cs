@@ -1,4 +1,6 @@
-﻿namespace Domain.Services
+﻿using Domain;
+
+namespace Services
 {
     public interface IVehicleService
     {

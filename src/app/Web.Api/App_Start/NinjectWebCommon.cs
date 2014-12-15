@@ -4,7 +4,7 @@
 namespace Web.Api.App_Start
 {
     using DAL.Repositories;
-    using Domain.Services;
+    using Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Syntax;

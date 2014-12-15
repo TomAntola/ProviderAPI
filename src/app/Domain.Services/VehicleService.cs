@@ -1,6 +1,7 @@
 ﻿using DAL.Repositories;
+using Domain;
 
-namespace Domain.Services
+namespace Services
 {
     public class VehicleService : IVehicleService
     {
