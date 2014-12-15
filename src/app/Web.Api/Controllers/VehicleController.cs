@@ -1,8 +1,8 @@
-﻿using Domain;
-using Services.Vehicles;
+﻿using Services.Vehicles;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Web.Api.Representations;
 
 namespace Web.Api.Controllers
 {
@@ -17,9 +17,10 @@ namespace Web.Api.Controllers
 
         public HttpResponseMessage Get(HttpRequestMessage request, string company, string carNo)
         {
-            var vehicle = _vehicleService.GetVehicle(company, carNo);
+            var domain_vehicle = _vehicleService.GetVehicle(company, carNo);
+            var vehicle_representation = new Vehicle(domain_vehicle);
 
-            return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle);
+            return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle_representation);
         }
     }
 }
