@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Security.Principal;
 
-namespace Web.Common.Security
+namespace Services.Security
 {
     public class GenericPrincipalFactory : IPrincipalFactory
     {

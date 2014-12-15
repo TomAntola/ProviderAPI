@@ -45,6 +45,8 @@
     <Compile Include="ISecurityService.cs" />
     <Compile Include="IVehicleService.cs" />
     <Compile Include="SecurityService.cs" />
+    <Compile Include="Security\GenericPrincipalFactory.cs" />
+    <Compile Include="Security\IPricipalFactory.cs" />
     <Compile Include="VehicleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

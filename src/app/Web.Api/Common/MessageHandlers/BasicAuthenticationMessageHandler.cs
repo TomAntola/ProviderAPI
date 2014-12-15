@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Web.Common.Security;
+using Services.Security;
 
 namespace Web.Api.Common.MessageHandlers
 {

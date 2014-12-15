@@ -4,18 +4,18 @@
 namespace Web.Api.App_Start
 {
     using DAL.Repositories;
-    using Services;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Syntax;
     using Ninject.Web.Common;
+    using Services;
     using System;
     using System.Diagnostics.Contracts;
     using System.Web;
     using System.Web.Http;
     using System.Web.Http.Dependencies;
-    using Web.Common.Security;
     using Web.Api.Common.MessageHandlers;
+    using Services.Security;
 
     public static class NinjectWebCommon
     {
