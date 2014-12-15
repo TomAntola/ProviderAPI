@@ -14,7 +14,7 @@ namespace DAL.Repositories
 
         public void AddEditUser(ProviderApiUser providerApiUser)
         {
-            throw new NotImplementedException("ProviderApiUserRepositoryStub has not implemented the AddEditUser method.");
+            throw new NotImplementedException("ProviderApiUserRepositoryFake has not implemented the AddEditUser method.");
         }
     }
 }

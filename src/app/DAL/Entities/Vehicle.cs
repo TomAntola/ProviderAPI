@@ -22,6 +22,10 @@
 
         public string VinNo { get; set; }
 
+        public string State { get; set; }
+
+        public string LicensePlate { get; set; }
+
         public bool IsActive { get; set; }
     }
 }

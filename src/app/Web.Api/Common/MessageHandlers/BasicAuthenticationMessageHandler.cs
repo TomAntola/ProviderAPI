@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
 
 namespace Web.Api.Common.MessageHandlers
 {
@@ -29,77 +30,78 @@ namespace Web.Api.Common.MessageHandlers
 
         protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var authHeader = request.Headers.Authorization;
-
-            if (authHeader == null)
-            {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            if (authHeader.Scheme != BASIC_AUTHENTICATION)
-            {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            var encodedCredentials = authHeader.Parameter;
-
-            if (encodedCredentials == null)
-            {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            byte[] credentialBytes;
-
             try
             {
+                var authHeader = request.Headers.Authorization;
+
+                if (authHeader == null)
+                {
+                    return CreateUnauthorizedResponse(request, "Authorization header is missing.");
+                }
+
+                if (authHeader.Scheme != BASIC_AUTHENTICATION)
+                {
+                    return CreateUnauthorizedResponse(request, "Authorizaiton header mechanism must be 'Basic'.");
+                }
+
+                var encodedCredentials = authHeader.Parameter;
+
+                if (encodedCredentials == null)
+                {
+                    return CreateUnauthorizedResponse(request, "Authorization header credentials are missing.");
+                }
+
+                byte[] credentialBytes;
+
                 credentialBytes = Convert.FromBase64String(encodedCredentials);
+
+                var credentials = Encoding.ASCII.GetString(credentialBytes);
+                var credentialParts = credentials.Split(AUTHORIZATION_HEADER_SEPARATOR);
+
+                if (credentialParts.Length != 2)
+                {
+                    return CreateUnauthorizedResponse(request, "Authorization header does not contain a username and a password separated by a colon. Are you missing a colon?");
+                }
+
+                var username = credentialParts[0].Trim();
+                var password = credentialParts[1].Trim();
+
+                var providerApiUser = _securityService.GetUser(username);
+
+                if (providerApiUser == null)
+                {
+                    return CreateUnauthorizedResponse(request, "Username was not found.");
+                }
+
+                var passwordHash = _securityService.HashSaltedPassword(Encoding.UTF8.GetBytes(password), providerApiUser.Salt, _hashAlgorithm);
+
+                if (!_securityService.IsValidPassword(passwordHash, providerApiUser.Password))
+                {
+                    return CreateUnauthorizedResponse(request, "Username was not found.");
+                }
+
+                IIdentity identity = _principalFactory.CreateIdentity(username, BASIC_AUTHENTICATION);
+                IPrincipal principal = _principalFactory.CreatePrincipal(identity);
+
+                Thread.CurrentPrincipal = principal;
+
+                if (HttpContext.Current != null && HttpContext.Current.User != null)
+                {
+                    HttpContext.Current.User = principal;
+                }
             }
-            catch (FormatException)
+            catch (Exception exception)
             {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            var credentials = Encoding.ASCII.GetString(credentialBytes);
-            var credentialParts = credentials.Split(AUTHORIZATION_HEADER_SEPARATOR);
-
-            if (credentialParts.Length != 2)
-            {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            var username = credentialParts[0].Trim();
-            var password = credentialParts[1].Trim();
-
-            var providerApiUser = _securityService.GetUser(username);
-
-            if (providerApiUser == null)
-            {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            var passwordHash = _securityService.HashSaltedPassword(Encoding.UTF8.GetBytes(password), providerApiUser.Salt, _hashAlgorithm);
-
-            if (!_securityService.ValidPassword(passwordHash, providerApiUser.Password))
-            {
-                return CreateUnauthorizedResponse(request);
-            }
-
-            IIdentity identity = _principalFactory.CreateIdentity(username, BASIC_AUTHENTICATION);
-            IPrincipal principal = _principalFactory.CreatePrincipal(identity);
-
-            Thread.CurrentPrincipal = principal;
-
-            if (HttpContext.Current != null && HttpContext.Current.User != null)
-            {
-                HttpContext.Current.User = principal;
+                return CreateUnauthorizedResponse(request, exception.GetBaseException().Message);
             }
 
             return base.SendAsync(request, cancellationToken);
         }
 
-        private Task<HttpResponseMessage> CreateUnauthorizedResponse(HttpRequestMessage request)
+        private Task<HttpResponseMessage> CreateUnauthorizedResponse(HttpRequestMessage request, string reason)
         {
-            var response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
+            var response = request.CreateResponse<HttpError>(HttpStatusCode.Unauthorized, new HttpError(reason));
+
             response.Headers.Add(CHALLENGE_AUTHENTICATION_HEADER_NAME, BASIC_AUTHENTICATION);
 
             var taskCompletionSource = new TaskCompletionSource<HttpResponseMessage>();

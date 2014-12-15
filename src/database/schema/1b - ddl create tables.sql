@@ -5,13 +5,12 @@
 use ProviderDb;
 go
 
-if not exists (select name from sys.tables where name = 'provider_hierarchy')
-  create table dbo.provider_hierarchy
+if not exists (select name from sys.tables where name = 'company')
+  create table dbo.company
   (
-   provider_hierarchy_id                          tinyint             not null identity (1, 1),
-   provider_hierarchy_name                        varchar   (50)      not null,
+   company_id                                     tinyint             not null identity (1, 1),
+   company_name                                   varchar   (50)      not null,
    is_active                                      bit                 not null,
-   parent_provider_hierarchy_id                   tinyint             not null,
    insert_ts                                      datetime            not null,
    update_ts                                      datetime            null
   );
@@ -30,10 +29,12 @@ go
 if not exists (select name from sys.tables where name = 'vehicle')
   create table dbo.vehicle
   (
-   provider_hierarchy_id                         tinyint             not null,
+   company_id                                     tinyint             not null,
    car_no                                         varchar   (15)      not null,
    vehicle_type_id                                tinyint             not null,
    capacity                                       tinyint             not null,
+   state_abbreviation                             varchar    (6)      null,
+   license_plate                                  varchar   (10)      null,
    last_inspection_date                           date                null,
    is_active                                      bit                 not null,
    insert_ts                                      datetime            not null,
@@ -46,7 +47,7 @@ if not exists (select name from sys.tables where name = 'provider_api_user')
   (
    provider_api_user_id                           smallint            not null identity (1, 1),
    username                                       varchar    (50)     not null,
-   password                                       varbinary  (64)     not null,
+   [password]                                     varbinary  (64)     not null,
    salt                                           varbinary  (64)     not null,
    insert_ts                                      datetime            not null,
    update_ts                                      datetime            null
