@@ -1,6 +1,6 @@
 ﻿using Domain;
 
-namespace Services
+namespace Services.Vehicles
 {
     public interface IVehicleService
     {

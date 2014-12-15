@@ -42,12 +42,12 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ISecurityService.cs" />
-    <Compile Include="IVehicleService.cs" />
-    <Compile Include="SecurityService.cs" />
+    <Compile Include="Security\ISecurityService.cs" />
+    <Compile Include="Vehicles\IVehicleService.cs" />
+    <Compile Include="Security\SecurityService.cs" />
     <Compile Include="Security\GenericPrincipalFactory.cs" />
     <Compile Include="Security\IPricipalFactory.cs" />
-    <Compile Include="VehicleService.cs" />
+    <Compile Include="Vehicles\VehicleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

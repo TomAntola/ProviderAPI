@@ -8,14 +8,14 @@ namespace Web.Api.App_Start
     using Ninject;
     using Ninject.Syntax;
     using Ninject.Web.Common;
-    using Services;
+    using Services.Security;
+    using Services.Vehicles;
     using System;
     using System.Diagnostics.Contracts;
     using System.Web;
     using System.Web.Http;
     using System.Web.Http.Dependencies;
     using Web.Api.Common.MessageHandlers;
-    using Services.Security;
 
     public static class NinjectWebCommon
     {

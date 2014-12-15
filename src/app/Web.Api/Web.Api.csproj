@@ -186,10 +186,6 @@
       <Project>{dbd13130-a9a0-44b5-bfff-92a3f36026e0}</Project>
       <Name>Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Web.Common\Web.Common.csproj">
-      <Project>{5ede3ae1-47d5-4eff-b275-01d00c9c4fbf}</Project>
-      <Name>Web.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Development.pubxml" />

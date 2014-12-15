@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace Services
+namespace Services.Security
 {
     public class SecurityService : ISecurityService
     {

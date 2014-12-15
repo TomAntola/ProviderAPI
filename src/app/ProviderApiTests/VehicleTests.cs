@@ -1,6 +1,8 @@
 ﻿using DAL.Repositories;
 using Moq;
 using NUnit.Framework;
+using Services.Security;
+using Services.Vehicles;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -70,7 +72,7 @@ namespace UnitTests
                 .Setup(x => x.GetVehicle(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<string>()))
                 .Returns((string Provider, string company, string carno) => vehicleDatabase.Where(vd => vd.Provider == Provider && vd.CompanyName == company && vd.CarNo == carno).FirstOrDefault());
 
-            var vehicleService = new Services.VehicleService(vehicleRepository.Object);
+            var vehicleService = new VehicleService(vehicleRepository.Object);
 
             Domain.Vehicle expectedVehicle = Domain.Vehicle.Create("Moq Provider", "2", "Moq Company", "Moq-001", "2011", "Lincoln", "Town Car", "Black", "Sedan", 4, "XTY10923RD76", true);
             Domain.Vehicle vehicle = vehicleService.GetVehicle("Moq Provider", "Moq Company", "Moq-001");
