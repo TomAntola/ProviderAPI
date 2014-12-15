@@ -17,7 +17,6 @@ go
 /* +-------------------------------------------------------------------------------------------------------------------------+ */
 create procedure [dbo].[GetVehicle]
 (
- @Provider         varchar (50),
  @Company          varchar (50),
  @CarNo            varchar (15)
 ) as
@@ -26,8 +25,7 @@ begin
   set nocount on;
   set transaction isolation level read uncommitted;
 
-  select Provider			= p.provider_hierarchy_name,
-         CompanyId			= cast(c.provider_hierarchy_id as varchar(15)),
+  select CompanyId			= cast(c.provider_hierarchy_id as varchar(15)),
          CompanyName			= c.provider_hierarchy_name,
 		 CarNo				= v.car_no,
 		 Year               = '2011',
@@ -41,8 +39,7 @@ begin
     from dbo.vehicle v inner join dbo.provider_hierarchy c on v.provider_hierarchy_id = c.provider_hierarchy_id
 	                   inner join dbo.provider_hierarchy p on c.parent_provider_hierarchy_id = p.provider_hierarchy_id
 					   inner join dbo.vehicle_type vt on v.vehicle_type_id = vt.vehicle_type_id
-  where p.provider_hierarchy_name = @Provider
-    and c.provider_hierarchy_name = @Company
+  where c.provider_hierarchy_name = @Company
 	and v.car_no = @CarNo;
 
 end;

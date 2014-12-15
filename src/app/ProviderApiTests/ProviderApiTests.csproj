@@ -74,6 +74,8 @@
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="Fakes\ProviderApiUserRepositoryFake.cs" />
+    <Compile Include="Fakes\VehicleRepositoryFake.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VehicleTests.cs" />
   </ItemGroup>
@@ -81,18 +83,26 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{ba65ea16-cbb4-4cb3-85c2-3ac65e3d1227}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{37cde597-7d59-447a-acdc-3dc4373187df}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Domain.Services\Domain.Services.csproj">
-      <Project>{dbd13130-a9a0-44b5-bfff-92a3f36026e0}</Project>
-      <Name>Domain.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{1e04d7cc-b6bc-487f-b8e5-6fedbfcb8e99}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{dbd13130-a9a0-44b5-bfff-92a3f36026e0}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Mocks\" />
+    <Folder Include="Stubs\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
