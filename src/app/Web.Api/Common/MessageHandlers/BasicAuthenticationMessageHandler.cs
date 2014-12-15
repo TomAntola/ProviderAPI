@@ -1,4 +1,4 @@
-﻿using Services;
+﻿using Services.Security;
 using System;
 using System.Net;
 using System.Net.Http;
@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
-using Services.Security;
 
 namespace Web.Api.Common.MessageHandlers
 {
