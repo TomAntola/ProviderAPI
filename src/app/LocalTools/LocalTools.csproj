@@ -72,13 +72,13 @@
       <Project>{37cde597-7d59-447a-acdc-3dc4373187df}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Domain.Services\Services.csproj">
-      <Project>{dbd13130-a9a0-44b5-bfff-92a3f36026e0}</Project>
-      <Name>Services</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{1e04d7cc-b6bc-487f-b8e5-6fedbfcb8e99}</Project>
       <Name>Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{dbd13130-a9a0-44b5-bfff-92a3f36026e0}</Project>
+      <Name>Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
