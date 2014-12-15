@@ -5,7 +5,7 @@ using System.Text;
 using System.Web.Http;
 using System.Web.Http.Filters;
 
-namespace Web.Inbound.Common.FiltersAndAttributes
+namespace Web.Api.Common.FiltersAndAttributes
 {
     public class ExceptionFilter : ExceptionFilterAttribute
     {

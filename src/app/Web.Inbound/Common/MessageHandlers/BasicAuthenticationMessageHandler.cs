@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using Web.Common.Security;
 
-namespace Web.Inbound.Common.MessageHandlers
+namespace Web.Api.Common.MessageHandlers
 {
     public class BasicAuthenticationMessageHandler : DelegatingHandler
     {

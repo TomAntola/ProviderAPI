@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Web.Inbound
+namespace Web.Api
 {
     //TODO: Remove once IIS6 setup is documented and/or fully understood.
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 

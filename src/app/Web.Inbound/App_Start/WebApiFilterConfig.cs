@@ -1,7 +1,7 @@
 ﻿using System.Web.Http;
-using Web.Inbound.Common.FiltersAndAttributes;
+using Web.Api.Common.FiltersAndAttributes;
 
-namespace Web.Inbound
+namespace Web.Api
 {
     public class WebApiFilterConfig
     {

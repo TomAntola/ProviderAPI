@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Web.Inbound.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Web.Inbound.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Web.Api.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Web.Api.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Web.Inbound.App_Start
+namespace Web.Api.App_Start
 {
     using DAL.Repositories;
     using Domain.Services;
@@ -15,7 +15,7 @@ namespace Web.Inbound.App_Start
     using System.Web.Http;
     using System.Web.Http.Dependencies;
     using Web.Common.Security;
-    using Web.Inbound.Common.MessageHandlers;
+    using Web.Api.Common.MessageHandlers;
 
     public static class NinjectWebCommon
     {

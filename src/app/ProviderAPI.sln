@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Inbound", "Web.Inbound\Web.Inbound.csproj", "{EE0F1D3A-7847-43E6-9F8C-6FEE9DC6FA89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Api", "Web.Inbound\Web.Api.csproj", "{EE0F1D3A-7847-43E6-9F8C-6FEE9DC6FA89}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7E522223-C344-4A59-B4C4-692848FF5D96}"
 	ProjectSection(SolutionItems) = preProject

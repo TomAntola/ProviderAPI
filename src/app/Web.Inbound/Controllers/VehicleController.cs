@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
-namespace Web.Inbound.Controllers
+namespace Web.Api.Controllers
 {
     public class VehicleController : ApiController
     {

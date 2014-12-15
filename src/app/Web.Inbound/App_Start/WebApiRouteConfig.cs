@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Web.Inbound
+namespace Web.Api
 {
     public static class WebApiRouteConfig
     {
