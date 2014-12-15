@@ -9,9 +9,11 @@
             CompanyId = vehicle.CompanyId;
             CompanyName = vehicle.CompanyName;
             IsActive = vehicle.IsActive;
+            LicensePlate = vehicle.LicensePlate;
             Make = vehicle.Make;
             MaxNoOfPassengers = vehicle.MaxNoOfPassengers;
             Model = vehicle.Model;
+            State = vehicle.State;
             VehicleType = vehicle.VehicleType;
             VinNo = vehicle.VinNo;
             Year = vehicle.Year;
@@ -36,6 +38,10 @@
         public byte MaxNoOfPassengers { get; set; }
 
         public string VinNo { get; set; }
+
+        public string State { get; set; }
+
+        public string LicensePlate { get; set; }
 
         public bool IsActive { get; set; }
     }

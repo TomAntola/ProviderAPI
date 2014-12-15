@@ -5,8 +5,8 @@
 use ProviderDb;
 go
 
-if exists (select r.* from sys.tables t inner join sys.triggers r on t.object_id = r.parent_id where t.name = 'provider_hierarchy' and r.name = 'provider_hierarchy_setupdatets')
-  drop trigger dbo.provider_hierarchy_setupdatets;
+if exists (select r.* from sys.tables t inner join sys.triggers r on t.object_id = r.parent_id where t.name = 'company' and r.name = 'company_setupdatets')
+  drop trigger dbo.company_setupdatets;
 
 if exists (select r.* from sys.tables t inner join sys.triggers r on t.object_id = r.parent_id where t.name = 'vehicle_type' and r.name = 'vehicle_type_setupdatets')
   drop trigger dbo.vehicle_type_setupdatets;

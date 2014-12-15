@@ -58,9 +58,9 @@ namespace UnitTests
         {
             var vehicleDatabase = new List<DAL.Entities.Vehicle>
             {
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-001", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RD76", IsActive = true},
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-002", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RA49", IsActive = true},
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-101", Year = "2011", Make = "Lincoln", Model = "MKZ", Color = "Black", MaxNoOfPassengers = 6, VehicleType = "SUV", VinNo = "XTY109RHT7I9", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-001", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RD76", State = "NY", LicensePlate = "ZEU-125", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-002", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RA49", State = "NY", LicensePlate = "TG1-918", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-101", Year = "2011", Make = "Lincoln", Model = "MKZ", Color = "Black", MaxNoOfPassengers = 6, VehicleType = "SUV", VinNo = "XTY109RHT7I9", State = "NY", LicensePlate = "REF-012", IsActive = true},
             };
 
             var vehicleRepository = new Mock<IVehicleRepository>();
@@ -71,7 +71,7 @@ namespace UnitTests
 
             var vehicleService = new VehicleService(vehicleRepository.Object);
 
-            Domain.Vehicle expectedVehicle = Domain.Vehicle.Create("2", "Moq Company", "Moq-001", "2011", "Lincoln", "Town Car", "Black", "Sedan", 4, "XTY10923RD76", true);
+            Domain.Vehicle expectedVehicle = Domain.Vehicle.Create("2", "Moq Company", "Moq-001", "2011", "Lincoln", "Town Car", "Black", "Sedan", 4, "XTY10923RD76", "NJ", "ZEU-125", true);
             Domain.Vehicle vehicle = vehicleService.GetVehicle("Moq Company", "Moq-001");
 
             Assert.IsNotNull(vehicle);

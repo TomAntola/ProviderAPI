@@ -24,9 +24,13 @@
 
         public string VinNo { get; private set; }
 
+        public string State { get; private set; }
+
+        public string LicensePlate { get; private set; }
+
         public bool IsActive { get; private set; }
 
-        public static Vehicle Create(string companyId, string companyName, string carNo, string year, string make, string model, string color, string vehicleType, byte maxNoOfPassengers, string vinNo, bool isActive)
+        public static Vehicle Create(string companyId, string companyName, string carNo, string year, string make, string model, string color, string vehicleType, byte maxNoOfPassengers, string vinNo, string state, string licensePlate, bool isActive)
         {
             var newVehicle = new Vehicle()
             {
@@ -40,6 +44,8 @@
                 VehicleType = vehicleType,
                 MaxNoOfPassengers = maxNoOfPassengers,
                 VinNo = vinNo,
+                State = state,
+                LicensePlate = licensePlate,
                 IsActive = isActive
             };
 

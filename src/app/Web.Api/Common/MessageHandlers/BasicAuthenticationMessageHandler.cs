@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Http;
 
 namespace Web.Api.Common.MessageHandlers
 {
@@ -99,9 +100,8 @@ namespace Web.Api.Common.MessageHandlers
 
         private Task<HttpResponseMessage> CreateUnauthorizedResponse(HttpRequestMessage request, string reason)
         {
-            var response = request.CreateResponse<string>(HttpStatusCode.Unauthorized, reason);
+            var response = request.CreateResponse<HttpError>(HttpStatusCode.Unauthorized, new HttpError(reason));
 
-            //var response = new HttpResponseMessage(HttpStatusCode.Unauthorized);
             response.Headers.Add(CHALLENGE_AUTHENTICATION_HEADER_NAME, BASIC_AUTHENTICATION);
 
             var taskCompletionSource = new TaskCompletionSource<HttpResponseMessage>();

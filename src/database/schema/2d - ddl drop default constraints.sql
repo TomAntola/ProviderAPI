@@ -5,8 +5,8 @@
 use ProviderDb;
 go
 
-if exists (select d.name from sys.schemas s inner join sys.tables t on s.schema_id = t.schema_id inner join sys.default_constraints d on t.object_id = d.parent_object_id where s.name = 'dbo' and t.name = 'provider_hierarchy' and d.name = 'df_provider_hierarchy_insert_ts')
-  alter table dbo.provider_hierarchy drop constraint df_provider_hierarchy_insert_ts;
+if exists (select d.name from sys.schemas s inner join sys.tables t on s.schema_id = t.schema_id inner join sys.default_constraints d on t.object_id = d.parent_object_id where s.name = 'dbo' and t.name = 'company' and d.name = 'df_company_insert_ts')
+  alter table dbo.company drop constraint df_company_insert_ts;
 
 if exists (select d.name from sys.schemas s inner join sys.tables t on s.schema_id = t.schema_id inner join sys.default_constraints d on t.object_id = d.parent_object_id where s.name = 'dbo' and t.name = 'vehicle_type' and d.name = 'df_vehicle_type_insert_ts')
   alter table dbo.vehicle_type drop constraint df_vehicle_type_insert_ts;
