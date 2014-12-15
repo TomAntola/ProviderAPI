@@ -1,6 +1,6 @@
 ﻿using DAL.Repositories;
 using Domain;
-using Domain.Services;
+using Services.Security;
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -63,7 +63,7 @@ namespace LocalTools
         static void AddUser()
         {
             var securityService = new SecurityService(new ProviderApiUserRepository());
-            var _hashAlgorithm = new SHA256Cng();
+            var _hashAlgorithm = new SHA256Managed();
 
             // Get username.
             Console.Write("\n\nEnter username: ");
