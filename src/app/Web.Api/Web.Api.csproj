@@ -149,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Representations\Vehicle.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiFilterConfig.cs" />
@@ -163,9 +164,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Representations\JSON\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

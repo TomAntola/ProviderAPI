@@ -20,7 +20,7 @@ namespace Services.Vehicles
 
             if (ev != null)
             {
-                vehicle = Vehicle.Create(ev.CompanyId, ev.CompanyName, ev.CarNo, ev.Year, ev.Make, ev.Model, ev.Color, ev.VehicleType, ev.MaxNoOfPassengers, ev.VinNo, ev.IsActive);
+                vehicle = Vehicle.Create(ev.CompanyId, ev.CompanyName, ev.CarNo, ev.Year, ev.Make, ev.Model, ev.Color, ev.VehicleType, ev.MaxNoOfPassengers, ev.VinNo, ev.State, ev.LicensePlate, ev.IsActive);
             }
 
             return vehicle;

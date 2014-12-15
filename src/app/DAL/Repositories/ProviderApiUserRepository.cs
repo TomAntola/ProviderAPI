@@ -21,7 +21,7 @@ namespace DAL.Repositories
 
             if (providerApiUser == null)
             {
-                throw new NotFoundException(string.Format("Provider API user was not found. Username = '{0}'.", username));
+                throw new NotFoundException("Username was not found.");
             }
 
             return ProviderApiUser.Create(providerApiUser.Username, providerApiUser.Password, providerApiUser.Salt);
