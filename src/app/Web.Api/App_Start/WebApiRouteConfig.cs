@@ -9,8 +9,8 @@ namespace Web.Api
             // Vehicle Route
             config.Routes.MapHttpRoute(
                 name: "Vehicle",
-                routeTemplate: "vehicle/{provider}/{company}/{carNo}",
-                defaults: new { controller = "Vehicle", company = string.Empty, carNo =  string.Empty }
+                routeTemplate: "vehicle/{company}/{carNo}",
+                defaults: new { controller = "Vehicle" }
             );
         }
     }
