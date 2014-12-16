@@ -1,4 +1,4 @@
-﻿using Services.Vehicles;
+﻿using Domain.Api.Vehicles;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -8,16 +8,16 @@ namespace Web.Api.Controllers
 {
     public class VehicleController : ApiController
     {
-        private readonly IVehicleService _vehicleService;
+        private readonly IVehicleApi _vehicleApi;
 
-        public VehicleController(IVehicleService vehicleService)
+        public VehicleController(IVehicleApi VehicleApi)
         {
-            _vehicleService = vehicleService;
+            _vehicleApi = VehicleApi;
         }
 
         public HttpResponseMessage Get(HttpRequestMessage request, string company, string carNo)
         {
-            var domain_vehicle = _vehicleService.GetVehicle(company, carNo);
+            var domain_vehicle = _vehicleApi.GetVehicle(company, carNo);
             var vehicle_representation = new Vehicle(domain_vehicle);
 
             return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle_representation);

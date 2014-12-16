@@ -1,13 +1,12 @@
 ﻿using DAL.Repositories;
-using Domain;
 
-namespace Services.Vehicles
+namespace Domain.Api.Vehicles
 {
-    public class VehicleService : IVehicleService
+    public class VehicleApi : IVehicleApi
     {
         private readonly IVehicleRepository _vehicleRepository;
 
-        public VehicleService(IVehicleRepository vehicleRepository)
+        public VehicleApi(IVehicleRepository vehicleRepository)
         {
             _vehicleRepository = vehicleRepository;
         }

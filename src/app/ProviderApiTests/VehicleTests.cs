@@ -1,7 +1,7 @@
 ﻿using DAL.Repositories;
+using Domain.Api.Vehicles;
 using Moq;
 using NUnit.Framework;
-using Services.Vehicles;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -54,7 +54,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void VehicleServiceGetVehicleReturnsExpectedVehicle()
+        public void VehicleApiGetVehicleReturnsExpectedVehicle()
         {
             var vehicleDatabase = new List<DAL.Entities.Vehicle>
             {
@@ -69,10 +69,10 @@ namespace UnitTests
                 .Setup(x => x.GetVehicle(It.IsAny<string>(), It.IsAny<string>()))
                 .Returns((string company, string carno) => vehicleDatabase.Where(vd => string.Compare(vd.CompanyName, company, true) == 0 && string.Compare(vd.CarNo, carno, true) == 0).FirstOrDefault());
 
-            var vehicleService = new VehicleService(vehicleRepository.Object);
+            var VehicleApi = new VehicleApi(vehicleRepository.Object);
 
             Domain.Vehicle expectedVehicle = Domain.Vehicle.Create("2", "Moq Company", "Moq-001", "2011", "Lincoln", "Town Car", "Black", "Sedan", 4, "XTY10923RD76", "NJ", "ZEU-125", true);
-            Domain.Vehicle vehicle = vehicleService.GetVehicle("Moq Company", "Moq-001");
+            Domain.Vehicle vehicle = VehicleApi.GetVehicle("Moq Company", "Moq-001");
 
             Assert.IsNotNull(vehicle);
             Assert.AreEqual(expectedVehicle.CompanyId, vehicle.CompanyId);

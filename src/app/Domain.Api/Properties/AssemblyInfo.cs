@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Services")]
+[assembly: AssemblyTitle("Domain.Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyProduct("Services")]
+[assembly: AssemblyProduct("Domain.Api")]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9effefc2-f6ff-4b93-93d2-450f1d6f145d")]
+[assembly: Guid("d41a26c9-b5dc-4cc6-b3a1-835e05801abd")]

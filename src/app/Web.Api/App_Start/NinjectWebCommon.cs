@@ -4,12 +4,12 @@
 namespace Web.Api.App_Start
 {
     using DAL.Repositories;
+    using Domain.Api.Security;
+    using Domain.Api.Vehicles;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Syntax;
     using Ninject.Web.Common;
-    using Services.Security;
-    using Services.Vehicles;
     using System;
     using System.Diagnostics.Contracts;
     using System.Web;
@@ -60,7 +60,7 @@ namespace Web.Api.App_Start
             kernel.Bind<IProviderApiUserRepository>().To<ProviderApiUserRepository>();
 
             // Services.
-            kernel.Bind<IVehicleService>().To<VehicleService>();
+            kernel.Bind<IVehicleApi>().To<VehicleApi>();
             kernel.Bind<ISecurityService>().To<SecurityService>();
 
             // Factories.
