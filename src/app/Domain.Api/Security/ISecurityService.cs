@@ -1,7 +1,6 @@
-﻿using Domain;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 
-namespace Services.Security
+namespace Domain.Api.Security
 {
     public interface ISecurityService
     {

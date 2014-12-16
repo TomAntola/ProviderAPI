@@ -1,6 +1,6 @@
 ﻿using DAL.Repositories;
 using Domain;
-using Services.Security;
+using Domain.Api.Security;
 using System;
 using System.Security.Cryptography;
 using System.Text;
