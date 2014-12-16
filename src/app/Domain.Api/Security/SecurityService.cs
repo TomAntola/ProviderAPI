@@ -1,10 +1,9 @@
 ﻿using DAL.Repositories;
-using Domain;
 using System;
 using System.Linq;
 using System.Security.Cryptography;
 
-namespace Services.Security
+namespace Domain.Api.Security
 {
     public class SecurityService : ISecurityService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Security.Principal;
 
-namespace Services.Security
+namespace Domain.Api.Security
 {
     public interface IPrincipalFactory
     {
