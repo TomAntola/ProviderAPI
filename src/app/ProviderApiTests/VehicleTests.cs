@@ -15,9 +15,9 @@ namespace UnitTests
         {
             var vehicleDatabase = new List<DAL.Entities.Vehicle>
             {
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-001", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RD76", IsActive = true},
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-002", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RA49", IsActive = true},
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-101", Year = "2011", Make = "Lincoln", Model = "MKZ", Color = "Black", MaxNoOfPassengers = 6, VehicleType = "SUV", VinNo = "XTY109RHT7I9", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyName = "Moq Company", CarNo = "Moq-001", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, MaxNoLuggage = 6, RegulatingAgencyLicenseNo = "TLC", VehicleType = "Sedan", VinNo = "XTY10923RD76", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyName = "Moq Company", CarNo = "Moq-002", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, MaxNoLuggage = 6, RegulatingAgencyLicenseNo = "TLC", VehicleType = "Sedan", VinNo = "XTY10923RA49", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyName = "Moq Company", CarNo = "Moq-101", Year = "2011", Make = "Lincoln", Model = "MKZ", Color = "Black", MaxNoOfPassengers = 6, MaxNoLuggage = 6, RegulatingAgencyLicenseNo = "TLC",  VehicleType = "SUV", VinNo = "XTY109RHT7I9", IsActive = true},
             };
 
             var vehicleRepository = new Mock<IVehicleRepository>();
@@ -30,7 +30,6 @@ namespace UnitTests
 
             DAL.Entities.Vehicle expectedVehicle = new DAL.Entities.Vehicle
             {
-                CompanyId = "2",
                 CompanyName = "Moq Company",
                 CarNo = "Moq-001",
                 Year = "2011",
@@ -39,6 +38,8 @@ namespace UnitTests
                 Color = "Black",
                 VehicleType = "Sedan",
                 MaxNoOfPassengers = 4,
+                MaxNoLuggage = 6,
+                RegulatingAgencyLicenseNo = "TLC",
                 VinNo = "XTY10923RD76",
                 IsActive = true
             };
@@ -58,9 +59,9 @@ namespace UnitTests
         {
             var vehicleDatabase = new List<DAL.Entities.Vehicle>
             {
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-001", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RD76", State = "NY", LicensePlate = "ZEU-125", IsActive = true},
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-002", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, VehicleType = "Sedan", VinNo = "XTY10923RA49", State = "NY", LicensePlate = "TG1-918", IsActive = true},
-                new DAL.Entities.Vehicle { CompanyId = "2", CompanyName = "Moq Company", CarNo = "Moq-101", Year = "2011", Make = "Lincoln", Model = "MKZ", Color = "Black", MaxNoOfPassengers = 6, VehicleType = "SUV", VinNo = "XTY109RHT7I9", State = "NY", LicensePlate = "REF-012", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyName = "Moq Company", CarNo = "Moq-001", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, MaxNoLuggage = 6, RegulatingAgencyLicenseNo = "TLC", VehicleType = "Sedan", VinNo = "XTY10923RD76", State = "NY", LicensePlate = "ZEU-125", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyName = "Moq Company", CarNo = "Moq-002", Year = "2011", Make = "Lincoln", Model = "Town Car", Color = "Black", MaxNoOfPassengers = 4, MaxNoLuggage = 6, RegulatingAgencyLicenseNo = "TLC", VehicleType = "Sedan", VinNo = "XTY10923RA49", State = "NY", LicensePlate = "TG1-918", IsActive = true},
+                new DAL.Entities.Vehicle { CompanyName = "Moq Company", CarNo = "Moq-101", Year = "2011", Make = "Lincoln", Model = "MKZ", Color = "Black", MaxNoOfPassengers = 6, MaxNoLuggage = 6, RegulatingAgencyLicenseNo = "TLC", VehicleType = "SUV", VinNo = "XTY109RHT7I9", State = "NY", LicensePlate = "REF-012", IsActive = true},
             };
 
             var vehicleRepository = new Mock<IVehicleRepository>();
@@ -71,11 +72,12 @@ namespace UnitTests
 
             var VehicleApi = new VehicleApi(vehicleRepository.Object);
 
-            Domain.Vehicle expectedVehicle = Domain.Vehicle.Create("2", "Moq Company", "Moq-001", "2011", "Lincoln", "Town Car", "Black", "Sedan", 4, "XTY10923RD76", "NJ", "ZEU-125", true);
-            Domain.Vehicle vehicle = VehicleApi.GetVehicle("Moq Company", "Moq-001");
+            Domain.Vehicle expectedVehicle = Domain.Vehicle.Create(3, "Moq Company", "Moq-001", "2011", "Lincoln", "Town Car", "Black", "Sedan", 4, 6, "TLC", "XTY10923RD76", "NJ", "ZEU-125", true);
+            Domain.Vehicle vehicle = VehicleApi.GetVehicle(3, "Moq Company", "Moq-001");
 
             Assert.IsNotNull(vehicle);
-            Assert.AreEqual(expectedVehicle.CompanyId, vehicle.CompanyId);
+            Assert.AreEqual(expectedVehicle.ProviderId, vehicle.ProviderId);
+            Assert.AreEqual(expectedVehicle.CompanyName, vehicle.CompanyName);
             Assert.AreEqual(expectedVehicle.CarNo, vehicle.CarNo);
             Assert.AreEqual(expectedVehicle.VehicleType, vehicle.VehicleType);
             Assert.AreEqual(expectedVehicle.MaxNoOfPassengers, vehicle.MaxNoOfPassengers);

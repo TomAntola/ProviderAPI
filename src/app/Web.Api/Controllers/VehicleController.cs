@@ -15,9 +15,9 @@ namespace Web.Api.Controllers
             _vehicleApi = VehicleApi;
         }
 
-        public HttpResponseMessage Get(HttpRequestMessage request, string company, string carNo)
+        public HttpResponseMessage Get(HttpRequestMessage request, int provider_id, string company_name, string carNo)
         {
-            var domain_vehicle = _vehicleApi.GetVehicle(company, carNo);
+            var domain_vehicle = _vehicleApi.GetVehicle(provider_id, company_name, carNo);
             var vehicle_representation = new Vehicle(domain_vehicle);
 
             return request.CreateResponse<Vehicle>(HttpStatusCode.OK, vehicle_representation);

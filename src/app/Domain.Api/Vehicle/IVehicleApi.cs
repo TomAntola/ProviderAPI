@@ -2,6 +2,6 @@
 {
     public interface IVehicleApi
     {
-        Vehicle GetVehicle(string company, string carNo);
+        Vehicle GetVehicle(int providerId, string company, string carNo);
     }
 }

@@ -11,7 +11,7 @@ namespace Domain.Api.Vehicles
             _vehicleRepository = vehicleRepository;
         }
 
-        public Vehicle GetVehicle(string company, string carNo)
+        public Vehicle GetVehicle(int providerId, string company, string carNo)
         {
             Vehicle vehicle = null;
 
@@ -19,7 +19,7 @@ namespace Domain.Api.Vehicles
 
             if (ev != null)
             {
-                vehicle = Vehicle.Create(ev.CompanyId, ev.CompanyName, ev.CarNo, ev.Year, ev.Make, ev.Model, ev.Color, ev.VehicleType, ev.MaxNoOfPassengers, ev.VinNo, ev.State, ev.LicensePlate, ev.IsActive);
+                vehicle = Vehicle.Create(providerId, ev.CompanyName, ev.CarNo, ev.Year, ev.Make, ev.Model, ev.Color, ev.VehicleType, ev.MaxNoOfPassengers, ev.MaxNoLuggage, ev.RegulatingAgencyLicenseNo, ev.VinNo, ev.State, ev.LicensePlate, ev.IsActive);
             }
 
             return vehicle;
