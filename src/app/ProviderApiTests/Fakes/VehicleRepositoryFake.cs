@@ -13,7 +13,6 @@ namespace DAL.Repositories
             {
                 vehicle = new Vehicle
                 {
-                    CompanyId = "2",
                     CompanyName = "Black Diamond",
                     CarNo = "BDS-001",
                     Year = "2011",
@@ -21,6 +20,8 @@ namespace DAL.Repositories
                     Model = "TOWN CAR",
                     Color = "Black",
                     MaxNoOfPassengers = 4,
+                    MaxNoLuggage = 6,
+                    RegulatingAgencyLicenseNo = "TLC",
                     VehicleType = "Sedan",
                     VinNo = "XD90213UIDJJ654",
                     IsActive = true

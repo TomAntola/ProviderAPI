@@ -4,14 +4,16 @@
     {
         public Vehicle(Domain.Vehicle vehicle)
         {
+            ProviderId = vehicle.ProviderId;
+            CompanyName = vehicle.CompanyName;
             CarNo = vehicle.CarNo;
             Color = vehicle.Color;
-            CompanyId = vehicle.CompanyId;
-            CompanyName = vehicle.CompanyName;
             IsActive = vehicle.IsActive;
             LicensePlate = vehicle.LicensePlate;
             Make = vehicle.Make;
             MaxNoOfPassengers = vehicle.MaxNoOfPassengers;
+            MaxNoLuggage = vehicle.MaxNoOfLuggage;
+            RegulatingAgencyLicenseNo = vehicle.RegulatingAgencyLicenseNo;
             Model = vehicle.Model;
             State = vehicle.State;
             VehicleType = vehicle.VehicleType;
@@ -19,7 +21,7 @@
             Year = vehicle.Year;
         }
 
-        public string CompanyId { get; set; }
+        public int ProviderId { get; set; }
 
         public string CompanyName { get; set; }
 
@@ -36,6 +38,10 @@
         public string VehicleType { get; set; }
 
         public byte MaxNoOfPassengers { get; set; }
+
+        public byte MaxNoLuggage { get; set; }
+
+        public string RegulatingAgencyLicenseNo { get; set; }
 
         public string VinNo { get; set; }
 
